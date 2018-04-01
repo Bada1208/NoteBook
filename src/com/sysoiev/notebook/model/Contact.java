@@ -1,18 +1,17 @@
 package com.sysoiev.notebook.model;
 
-
 public class Contact {
 
     private String surname;
     private String name;
     private int phoneNumber;
-    private String city;
+    private int age;
 
-    public Contact(String surname, String name, int phoneNumber, String city) {
+    public Contact(String name, String surname, int phoneNumber, int age) {
         this.surname = surname;
         this.name = name;
         this.phoneNumber = phoneNumber;
-        this.city = city;
+        this.age = age;
     }
 
     public String getSurname() {
@@ -39,12 +38,21 @@ public class Contact {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getCity() {
-        return city;
+    public int getAge() {
+        return age;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Contact:" + '\n' +
+                "surname = " + surname + '\n' +
+                "name = " + name + '\n' +
+                "phone number = " + phoneNumber + '\n'+
+                "age = " + age;
     }
 
 }
