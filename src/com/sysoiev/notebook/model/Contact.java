@@ -4,10 +4,10 @@ public class Contact {
 
     private String surname;
     private String name;
-    private int phoneNumber;
+    private String phoneNumber;
     private int age;
 
-    public Contact(String surname, String name, int phoneNumber, int age) {
+    public Contact(String surname, String name, String phoneNumber, int age) {
         this.surname = surname;
         this.name = name;
         this.phoneNumber = phoneNumber;
@@ -30,11 +30,11 @@ public class Contact {
         this.name = name;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

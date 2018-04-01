@@ -6,6 +6,7 @@ import com.sysoiev.notebook.view.CmdLineService;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Scanner;
 
 public class CmdLineServiceImpl implements CmdLineService {
 
@@ -54,7 +55,7 @@ public class CmdLineServiceImpl implements CmdLineService {
         System.out.println("Enter name");
         String name = br.readLine();
         System.out.println("Enter phone number");
-        int phoneNumber = Integer.parseInt(br.readLine());
+        String phoneNumber = br.readLine();
         System.out.println("Enter age");
         int age = Integer.parseInt(br.readLine());
 

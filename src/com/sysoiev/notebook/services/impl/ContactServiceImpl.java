@@ -12,7 +12,7 @@ public class ContactServiceImpl implements ContactService {
     private List<Contact> contactList = new ArrayList<>();
 
     @Override
-    public void createContact(String surname, String name, int phoneNumber, int age) {
+    public void createContact(String surname, String name, String phoneNumber, int age) {
         this.contactList.add(new Contact(surname, name, phoneNumber, age));
 
         for (Contact contact : this.contactList) {
