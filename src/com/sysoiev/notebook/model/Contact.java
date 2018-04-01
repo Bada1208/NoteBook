@@ -7,7 +7,7 @@ public class Contact {
     private int phoneNumber;
     private int age;
 
-    public Contact(String name, String surname, int phoneNumber, int age) {
+    public Contact(String surname, String name, int phoneNumber, int age) {
         this.surname = surname;
         this.name = name;
         this.phoneNumber = phoneNumber;
@@ -51,7 +51,7 @@ public class Contact {
         return "Contact:" + '\n' +
                 "surname = " + surname + '\n' +
                 "name = " + name + '\n' +
-                "phone number = " + phoneNumber + '\n'+
+                "phone number = " + phoneNumber + '\n' +
                 "age = " + age;
     }
 
