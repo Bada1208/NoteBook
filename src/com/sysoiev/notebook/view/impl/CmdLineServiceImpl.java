@@ -48,6 +48,7 @@ public class CmdLineServiceImpl implements CmdLineService {
     }
 
 
+
     private static void showMenu() {
         System.out.println("1. Create Contact");
         System.out.println("2. Delete Contact");
