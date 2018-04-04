@@ -68,10 +68,10 @@ public class CmdLineServiceImpl implements CmdLineService {
         this.contactService.createContact(surName, name, phoneNumber, age);
     }
 
-    private void deleteContact() throws IOException {
-        System.out.println("Delete Contact : Enter surname ");
-        String surName = br.readLine();
-        this.contactService.deleteContact(surName);
+    private void deleteContact()throws IOException  {
+        this.contactService.deleteContact();
+
+
     }
     private void showAllContacts(){
         System.out.println("The Contacts of the Phonebook are:");
