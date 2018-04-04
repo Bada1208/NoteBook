@@ -22,7 +22,16 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public void deleteContact() {
-
+    public void deleteContact(String surName, String name, String phoneNumber, int age) {
+        if (surName.equals(surName))
+            contactList.remove(this.contactList(surName, name, phoneNumber, age));
     }
+
+    @Override
+    public void showAllContacts() {
+        for (Contact contact : this.contactList) {
+            System.out.println(contact);
+        }
+    }
+
 }

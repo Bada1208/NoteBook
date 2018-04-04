@@ -1,12 +1,12 @@
 package com.sysoiev.notebook.view.impl;
 
+import com.sysoiev.notebook.model.Contact;
 import com.sysoiev.notebook.services.ContactService;
 import com.sysoiev.notebook.view.CmdLineService;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Scanner;
 
 public class CmdLineServiceImpl implements CmdLineService {
 
@@ -33,6 +33,10 @@ public class CmdLineServiceImpl implements CmdLineService {
                     deleteContact();
                     break;
                 }
+                case "3": {
+                    showAllContacts();
+                    break;
+                }
                 case "0": {
                     isRunning = false;
                     break;
@@ -43,9 +47,11 @@ public class CmdLineServiceImpl implements CmdLineService {
         }
     }
 
+
     private static void showMenu() {
         System.out.println("1. Create Contact");
         System.out.println("2. Delete Contact");
+        System.out.println("3. Show all Contacts");
         System.out.println("0. Exit");
     }
 
@@ -62,7 +68,15 @@ public class CmdLineServiceImpl implements CmdLineService {
         this.contactService.createContact(surName, name, phoneNumber, age);
     }
 
-    private void deleteContact() {
-        System.out.println("Delete Contact");
+    private void deleteContact() throws IOException {
+        System.out.println("Delete Contact : Enter surname ");
+        String surName = br.readLine();
+        this.contactService.deleteContact(surName);
     }
+    private void showAllContacts(){
+        System.out.println("The Contacts of the Phonebook are:");
+        this.contactService.showAllContacts();
+
+    }
+
 }
