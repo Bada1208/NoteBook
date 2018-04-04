@@ -22,27 +22,39 @@ public class ContactServiceImpl implements ContactService {
 
     }
 
+    //    @Override
+//    public void deleteContact() throws IOException, IndexOutOfBoundsException {
+//        BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
+//        System.out.println(" Deleting a contact by index ");
+//        int index = Integer.parseInt(br.readLine());
+//        // проверка на выход за пределы массива, если нет - вывод успешности выполнения
+//        try {
+//            if (index >= 0) {
+//                contactList.remove(index);
+//                System.out.println("Contact deleted");
+//            } else { // если число < 0 выведем это:
+//                System.out.println(" Incorrect index. Repeat! Delete Contact");
+//            } // если ввести число > чем индексов массива выведем это:
+//        } catch (IndexOutOfBoundsException e) {
+//            System.out.println(" Incorrect index. Repeat! Delete Contact");
+//        }
+//    }
     @Override
-    public void deleteContact() throws IOException, IndexOutOfBoundsException {
-        BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
-        System.out.println(" Deleting a contact by index ");
-        int index = Integer.parseInt(br.readLine());
-        // проверка на выход за пределы массива, если нет - вывод успешности выполнения
-        try {
-            if (index >= 0) {
-                contactList.remove(index);
-                System.out.println("Contact deleted");
-            } else { // если число < 0 выведем это:
-                System.out.println(" Incorrect index. Repeat! Delete Contact");
-            } // если ввести число > чем индексов массива выведем это:
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println(" Incorrect index. Repeat! Delete Contact");
+    public void deleteContact() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Enter ,please , surname ");
+        String surName = br.readLine();
+        if (contactList.contains(surName)) {
+            System.out.println("Contact Deleted ");
+            contactList.remove(this.contactList);
+        } else {
+            System.out.println("Wrong typing");
+
         }
     }
-
-    @Override
-    public void showAllContacts() {
-        for (Contact contact : this.contactList) System.out.println(contact);
-    }
+        @Override
+        public void showAllContacts () {
+            for (Contact contact : this.contactList) System.out.println(contact);
+        }
 
 }
