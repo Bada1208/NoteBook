@@ -40,18 +40,30 @@ public class ContactServiceImpl implements ContactService {
 //            System.out.println(" Incorrect index. Repeat! Delete Contact");
 //        }
 //    }
+//    Override
+//    public void deleteContact() throws IOException {
+//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//        System.out.println("Enter ,please , surname ");
+//        String surName1 = br.readLine();
+//        for(int i = 0;i < contactList.size();i++){
+//            if(contactList.get(i))
+//                contactList.remove(this.contactList);
+//        }else{
+//            System.out.println("Wrong typing");
+//        }
+//
+//    }
     @Override
     public void deleteContact() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Enter ,please , surname ");
-        String surName1 = br.readLine();
-        for(int i = 0;i < contactList.size();i++){
-        if(contactList.get(i))
-                contactList.remove(this.contactList);
-        }else{
-            System.out.println("Wrong typing");
+        System.out.println("Enter surname ");
+        String surName = br.readLine();
+        for(int i = 0; i < contactList.size(); i++) {
+            final Contact contact = contactList.get(i);
+            if(contact.getSurname().equals(surName)) {
+                contactList.remove(i);
+            }
         }
-
     }
         @Override
         public void showAllContacts () {
