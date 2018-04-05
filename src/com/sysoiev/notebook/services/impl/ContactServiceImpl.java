@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class ContactServiceImpl implements ContactService {
@@ -43,14 +44,14 @@ public class ContactServiceImpl implements ContactService {
     public void deleteContact() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Enter ,please , surname ");
-        String surName = br.readLine();
-        if (contactList.contains(surName)) {
-            System.out.println("Contact Deleted ");
-            contactList.remove(this.contactList);
-        } else {
+        String surName1 = br.readLine();
+        for(int i = 0;i < contactList.size();i++){
+        if(contactList.get(i))
+                contactList.remove(this.contactList);
+        }else{
             System.out.println("Wrong typing");
-
         }
+
     }
         @Override
         public void showAllContacts () {
