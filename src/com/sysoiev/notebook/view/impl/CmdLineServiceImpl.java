@@ -37,6 +37,10 @@ public class CmdLineServiceImpl implements CmdLineService {
                     showAllContacts();
                     break;
                 }
+//                case "4": {
+//                    editContact();
+//                    break;
+//                }
                 case "0": {
                     isRunning = false;
                     break;
@@ -48,11 +52,11 @@ public class CmdLineServiceImpl implements CmdLineService {
     }
 
 
-
     private static void showMenu() {
         System.out.println("1. Create Contact");
         System.out.println("2. Delete Contact");
         System.out.println("3. Show all Contacts");
+        System.out.println("4. Edit Contact");
         System.out.println("0. Exit");
     }
 
@@ -69,15 +73,51 @@ public class CmdLineServiceImpl implements CmdLineService {
         this.contactService.createContact(surName, name, phoneNumber, age);
     }
 
-    private void deleteContact()throws IOException  {
-        this.contactService.deleteContact();
-
-
+    private void deleteContact() throws IOException {
+        System.out.println("Enter surname");
+        String surname = br.readLine();
+        this.contactService.deleteContact(surname);
     }
-    private void showAllContacts(){
+
+    private void showAllContacts() {
         System.out.println("The Contacts of the Phonebook are:");
         this.contactService.showAllContacts();
 
-    }
 
+    }
 }
+
+//    private void editContact() throws IOException {
+//        System.out.println("Enter name of modified contact");
+//        String oldName = br.readLine();
+//        int ageN = readInt();
+//        String newName = " ";
+//
+//        while (true) {
+//            try {
+//                System.out.println("Enter new name ");
+//                newName = br.readLine();
+//                break;
+//            } catch (NumberFormatException e) {
+//                System.out.println("Wrong input!");
+//            }
+//        }
+//
+//
+//       this.contactService.editContact(oldName, newName);
+//    }
+//    private int readInt() throws IOException{
+//        int i ;
+//        try {
+//            System.out.println("Enter number, please");
+//            String line = this.br.readLine();
+//            i = new Integer(line);
+//        }
+//        catch(NumberFormatException e){
+//            return readInt();
+//        }
+//        return i;
+//    }
+
+
+
