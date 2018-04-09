@@ -37,10 +37,10 @@ public class CmdLineServiceImpl implements CmdLineService {
                     showAllContacts();
                     break;
                 }
-//                case "4": {
-//                    editContact();
-//                    break;
-//                }
+                case "4": {
+                    editContact();
+                    break;
+                }
                 case "0": {
                     isRunning = false;
                     break;
@@ -85,39 +85,38 @@ public class CmdLineServiceImpl implements CmdLineService {
 
 
     }
-}
 
-//    private void editContact() throws IOException {
-//        System.out.println("Enter name of modified contact");
-//        String oldName = br.readLine();
-//        int ageN = readInt();
-//        String newName = " ";
-//
-//        while (true) {
-//            try {
-//                System.out.println("Enter new name ");
-//                newName = br.readLine();
-//                break;
-//            } catch (NumberFormatException e) {
-//                System.out.println("Wrong input!");
-//            }
-//        }
-//
-//
-//       this.contactService.editContact(oldName, newName);
-//    }
-//    private int readInt() throws IOException{
-//        int i ;
+
+    private void editContact() throws IOException {
+        System.out.println("Enter name of modified contact");
+        String name = br.readLine();
+        System.out.println("Enter new name");
+        String newName = br.readLine();
+
+        System.out.println("Enter age of modified contact");
+        String age = br.readLine();
+        System.out.println("Enter new age");
+        int newAge = Integer.parseInt(br.readLine());
+
+        System.out.println("Enter phoneNumber of modified contact");
+        String phoneNumber = br.readLine();
+        System.out.println("Enter new phone");
+        String newPhoneNumber = br.readLine();
+        this.contactService.editContact(name, newName, newPhoneNumber ,newAge);
+    }
+
+//    private int readInt() throws IOException {
+//        int i;
 //        try {
-//            System.out.println("Enter number, please");
+//            System.out.println("Input number!");
 //            String line = this.br.readLine();
 //            i = new Integer(line);
-//        }
-//        catch(NumberFormatException e){
+//        } catch (NumberFormatException ex) {
+//            System.out.println("Wrong Input!");
 //            return readInt();
 //        }
 //        return i;
 //    }
 
-
+}
 

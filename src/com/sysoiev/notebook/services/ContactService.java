@@ -9,6 +9,6 @@ public interface ContactService {
 
     void showAllContacts();
 
-   // void editContact(String oldName, String newName);
+    void editContact(String oldName, String newName, String newPhoneNumber, int newAge);
 
 }
