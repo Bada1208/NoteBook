@@ -102,8 +102,8 @@ public class CmdLineServiceImpl implements CmdLineService {
         String newPhoneNumber = br.readLine();
 
         System.out.println("Enter new age");
-        //int newAge = Integer.parseInt(br.readLine());
-        String newAge = br.readLine();
+        int newAge = Integer.parseInt(br.readLine());
+
 
         this.contactService.editContact(oldSurname, newSurname, newName, newPhoneNumber, newAge);
 
