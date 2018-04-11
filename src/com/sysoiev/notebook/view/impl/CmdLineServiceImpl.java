@@ -92,7 +92,7 @@ public class CmdLineServiceImpl implements CmdLineService {
         String oldSurname = br.readLine();
         System.out.println("Enter new surname");
         String newSurname = br.readLine();
-        if (newSurname.equals(" ")) {
+        if (newSurname.equals("")) {
             System.out.println(this.contactLIst.setSurname(oldSurname));
         }
 
