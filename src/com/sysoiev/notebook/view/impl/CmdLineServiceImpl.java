@@ -88,32 +88,24 @@ public class CmdLineServiceImpl implements CmdLineService {
 
 
     private void editContact() throws IOException {
+
         System.out.println("Enter surname of modified contact");
         String oldSurname = br.readLine();
+
         System.out.println("Enter new surname");
         String newSurname = br.readLine();
-        if (newSurname.equals("")) {
-            System.out.println(this.contactLIst.setSurname(oldSurname));
-        }
 
-        System.out.println("Enter name of modified contact");
-        String oldName = br.readLine();
         System.out.println("Enter new name");
         String newName = br.readLine();
 
-
-        System.out.println("Enter phoneNumber of modified contact");
-        String oldPhoneNumber = br.readLine();
         System.out.println("Enter new phone");
         String newPhoneNumber = br.readLine();
 
-
-        System.out.println("Enter age of modified contact");
-        int oldAge = Integer.parseInt(br.readLine());
         System.out.println("Enter new age");
-        int newAge = Integer.parseInt(br.readLine());
+        //int newAge = Integer.parseInt(br.readLine());
+        String newAge = br.readLine();
 
-        this.contactService.editContact(oldSurname, newSurname, oldName, newName, oldPhoneNumber, newPhoneNumber, oldAge, newAge);
+        this.contactService.editContact(oldSurname, newSurname, newName, newPhoneNumber, newAge);
 
     }
 

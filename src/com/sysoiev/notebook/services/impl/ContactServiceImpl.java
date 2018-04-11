@@ -39,13 +39,30 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public void editContact(String oldSurname,String newSurname,String oldName, String newName,String oldPhoneNumber,
-                            String newPhoneNumber,int oldAge, int newAge) {
-        Contact contact = this.contactList.get(oldSurname);
-        contact.setSurname(newSurname);
-        contact.setName(newName);
-        contact.setPhoneNumber(newPhoneNumber);
-        contact.setAge(newAge);
+    public void editContact(String oldSurname, String newSurname, String newName, String newPhoneNumber,String newAge) {
+//        Contact contact = this.contactList.get(oldSurname);
+//        contact.setSurname(newSurname);
+//        contact.setName(newName);
+//        contact.setPhoneNumber(newPhoneNumber);
+//        contact.setAge(newAge);
 
+
+        Contact contact = this.contactList.get(oldSurname);
+
+        if (!newSurname.equals("")) {
+            contact.setSurname(newSurname);
+        }
+        if (!newName.equals("")) {
+            contact.setName(newName);
+        }
+        if (!newPhoneNumber.equals("")) {
+            contact.setPhoneNumber(newPhoneNumber);
+        }
+        if (!newAge.equals("")) {
+            contact.setAge(Integer.valueOf(newAge));
+        }
+
+        contactList.remove(oldSurname);
+        contactList.put(newSurname, contact);
     }
 }

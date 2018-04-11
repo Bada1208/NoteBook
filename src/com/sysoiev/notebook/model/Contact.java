@@ -1,5 +1,7 @@
 package com.sysoiev.notebook.model;
 
+import java.util.Objects;
+
 public class Contact {
 
     private String surname;
@@ -44,6 +46,23 @@ public class Contact {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Contact contact = (Contact) o;
+        return age == contact.age &&
+                Objects.equals(surname, contact.surname) &&
+                Objects.equals(name, contact.name) &&
+                Objects.equals(phoneNumber, contact.phoneNumber);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(surname, name, phoneNumber, age);
     }
 
     @Override
