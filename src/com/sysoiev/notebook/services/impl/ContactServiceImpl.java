@@ -57,11 +57,15 @@ public class ContactServiceImpl implements ContactService {
         if (!newPhoneNumber.equals("")) {
             contact.setPhoneNumber(newPhoneNumber);
         }
-        if (newAge != 0) {
-            contact.setAge(newAge);
+        try {
+            if (newAge != 0) {
+                contact.setAge(newAge);
+            }
+        } catch (NumberFormatException e) {
+            System.out.println(" Enter zero ");
         }
 //        if (!newAge.equals("")) {
-//            contact.setAge(Integer.valueOf(newAge));
+//            contact.setAge(Integer.valueOf(newAge));//in the case of newAge will be String
 //        }
 
         contactList.remove(oldSurname);
