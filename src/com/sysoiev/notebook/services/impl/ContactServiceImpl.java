@@ -35,7 +35,6 @@ public class ContactServiceImpl implements ContactService {
         for (Contact contact : this.contactList.values()) {
             System.out.println(contact);
         }
-
     }
 
     @Override
