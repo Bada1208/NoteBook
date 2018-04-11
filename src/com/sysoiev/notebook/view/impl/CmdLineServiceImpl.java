@@ -86,14 +86,14 @@ public class CmdLineServiceImpl implements CmdLineService {
     }
 
 
-    private String editContact() throws IOException {
+    private void editContact() throws IOException {
         System.out.println("Enter surname of modified contact");
         String oldSurname = br.readLine();
         System.out.println("Enter new surname");
         String newSurname = br.readLine();
-        if (newSurname.equals(" ")) {
-            return oldSurname;
-        }
+//        if (newSurname.equals(" ")) {
+//            return oldSurname;
+//        }
 
         System.out.println("Enter name of modified contact");
         String oldName = br.readLine();
@@ -112,7 +112,7 @@ public class CmdLineServiceImpl implements CmdLineService {
 
 
         this.contactService.editContact(oldSurname, newSurname, oldName, newName, oldPhoneNumber, newPhoneNumber, oldAge, newAge);
-        return oldSurname;
+
     }
 
     private int readInt() throws IOException {
