@@ -38,8 +38,11 @@ public class ContactServiceImpl implements ContactService {
 
     }
 
-    public void editContact(String oldName, String newName, String newPhoneNumber, int newAge) {
-        Contact contact = this.contactList.get(oldName);
+    @Override
+    public void editContact(String oldSurname,String newSurname,String oldName, String newName,String oldPhoneNumber,
+                            String newPhoneNumber,int oldAge, int newAge) {
+        Contact contact = this.contactList.get(oldSurname);
+        contact.setSurname(newSurname);
         contact.setName(newName);
         contact.setPhoneNumber(newPhoneNumber);
         contact.setAge(newAge);

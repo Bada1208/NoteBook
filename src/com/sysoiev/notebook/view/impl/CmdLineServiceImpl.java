@@ -1,6 +1,5 @@
 package com.sysoiev.notebook.view.impl;
 
-import com.sysoiev.notebook.model.Contact;
 import com.sysoiev.notebook.services.ContactService;
 import com.sysoiev.notebook.view.CmdLineService;
 
@@ -87,36 +86,48 @@ public class CmdLineServiceImpl implements CmdLineService {
     }
 
 
-    private void editContact() throws IOException {
+    private String editContact() throws IOException {
+        System.out.println("Enter surname of modified contact");
+        String oldSurname = br.readLine();
+        System.out.println("Enter new surname");
+        String newSurname = br.readLine();
+        if (newSurname.equals(" ")) {
+            return oldSurname;
+        }
+
         System.out.println("Enter name of modified contact");
-        String name = br.readLine();
+        String oldName = br.readLine();
         System.out.println("Enter new name");
         String newName = br.readLine();
 
+        System.out.println("Enter phoneNumber of modified contact");
+        String oldPhoneNumber = br.readLine();
+        System.out.println("Enter new phone");
+        String newPhoneNumber = br.readLine();
+
         System.out.println("Enter age of modified contact");
-        String age = br.readLine();
+        int oldAge = Integer.parseInt(br.readLine());
         System.out.println("Enter new age");
         int newAge = Integer.parseInt(br.readLine());
 
-        System.out.println("Enter phoneNumber of modified contact");
-        String phoneNumber = br.readLine();
-        System.out.println("Enter new phone");
-        String newPhoneNumber = br.readLine();
-        this.contactService.editContact(name, newName, newPhoneNumber ,newAge);
+
+        this.contactService.editContact(oldSurname, newSurname, oldName, newName, oldPhoneNumber, newPhoneNumber, oldAge, newAge);
+        return oldSurname;
     }
 
-//    private int readInt() throws IOException {
-//        int i;
-//        try {
-//            System.out.println("Input number!");
-//            String line = this.br.readLine();
-//            i = new Integer(line);
-//        } catch (NumberFormatException ex) {
-//            System.out.println("Wrong Input!");
-//            return readInt();
-//        }
-//        return i;
-//    }
+    private int readInt() throws IOException {
+        int i;
+        try {
+            System.out.println("Input number!");
+            String line = this.br.readLine();
+            i = new Integer(line);
+        } catch (NumberFormatException ex) {
+            System.out.println("Wrong Input!");
+            return readInt();
+        }
+        return i;
+    }
+
 
 }
 
