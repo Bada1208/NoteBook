@@ -67,9 +67,10 @@ public class CmdLineServiceImpl implements CmdLineService {
         System.out.println("Enter phone number");
         String phoneNumber = br.readLine();
         System.out.println("Enter age");
-        int age = Integer.parseInt(br.readLine());
+        //int age = Integer.parseInt(br.readLine());
+        int ageN = readInt();
 
-        this.contactService.createContact(surName, name, phoneNumber, age);
+        this.contactService.createContact(surName, name, phoneNumber, ageN);
     }
 
     private void deleteContact() throws IOException {
@@ -91,34 +92,36 @@ public class CmdLineServiceImpl implements CmdLineService {
         String oldSurname = br.readLine();
         System.out.println("Enter new surname");
         String newSurname = br.readLine();
-//        if (newSurname.equals(" ")) {
-//            return oldSurname;
-//        }
+        if (newSurname.equals(" ")) {
+            System.out.println(this.contactLIst.setSurname(oldSurname));
+        }
 
         System.out.println("Enter name of modified contact");
         String oldName = br.readLine();
         System.out.println("Enter new name");
         String newName = br.readLine();
 
+
         System.out.println("Enter phoneNumber of modified contact");
         String oldPhoneNumber = br.readLine();
         System.out.println("Enter new phone");
         String newPhoneNumber = br.readLine();
+
 
         System.out.println("Enter age of modified contact");
         int oldAge = Integer.parseInt(br.readLine());
         System.out.println("Enter new age");
         int newAge = Integer.parseInt(br.readLine());
 
-
         this.contactService.editContact(oldSurname, newSurname, oldName, newName, oldPhoneNumber, newPhoneNumber, oldAge, newAge);
 
     }
 
     private int readInt() throws IOException {
+
         int i;
         try {
-            System.out.println("Input number!");
+            // System.out.println("Input number!");
             String line = this.br.readLine();
             i = new Integer(line);
         } catch (NumberFormatException ex) {
@@ -127,7 +130,6 @@ public class CmdLineServiceImpl implements CmdLineService {
         }
         return i;
     }
-
 
 }
 
