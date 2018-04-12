@@ -10,10 +10,11 @@ import java.io.PrintWriter;
 
 public class FileSystemContactDaoImpl implements ContactDao {
 
+
     @Override
     public void saveContact(Contact contact) {
-        File file =new File("data");
-        try(PrintWriter writer = new FileWriter(new BufferedReader(new FileWriter(file)))){
+        File file = new File("data");
+        try (PrintWriter writer = new FileWriter(new BufferedReader(new FileWriter(file)))) {
             writer.println(contact);
 
         }
