@@ -9,6 +9,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ContactServiceImpl implements ContactService {
+    /**
+     * Реализация ContactService которая использует Map для хранения данных.
+     */
 
     private Map<String, Contact> contactList = new HashMap<>();
 

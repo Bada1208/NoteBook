@@ -2,6 +2,9 @@ package com.sysoiev.notebook.services;
 
 
 public interface ContactService {
+    /**
+     * Сервис бизнес логики который описывает основные действия над доменными моделями - Контактами.
+     */
 
     void createContact(String surName, String name, String phoneNumber, int age);
 

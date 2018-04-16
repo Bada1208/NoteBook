@@ -4,6 +4,12 @@ import java.util.Objects;
 
 public class Contact {
 
+    /**
+     * Класс модель.
+     * Этот класс представляет основные сущности и хранимый тип данных.
+     * Это логические сущности которые управляются слоем сервисов бизнес логики.
+     */
+
     private String surname;
     private String name;
     private String phoneNumber;

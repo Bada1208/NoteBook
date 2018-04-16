@@ -1,6 +1,7 @@
 package com.sysoiev.notebook.view.impl;
 
 import com.sysoiev.notebook.services.ContactService;
+import com.sysoiev.notebook.util.ValidationUtil;
 import com.sysoiev.notebook.view.CmdLineService;
 
 import java.io.BufferedReader;
@@ -8,13 +9,16 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class CmdLineServiceImpl implements CmdLineService {
+    /**
+     * Сервис реализующий логику предоставления и считывания информации в/из консоль.
+     */
 
     private ContactService contactService;
-    private BufferedReader br =
-            new BufferedReader(new InputStreamReader(System.in));
+    private BufferedReader br ;
 
     public CmdLineServiceImpl(ContactService contactService) {
         this.contactService = contactService;
+        this.br = new BufferedReader(new InputStreamReader(System.in));
     }
 
     @Override
@@ -74,7 +78,7 @@ public class CmdLineServiceImpl implements CmdLineService {
     }
 
     private void deleteContact() throws IOException {
-        System.out.println("Enter surname");
+        System.out.println("Enter surname in order to remove .");
         String surname = br.readLine();
         this.contactService.deleteContact(surname);
     }
@@ -102,7 +106,8 @@ public class CmdLineServiceImpl implements CmdLineService {
         String newPhoneNumber = br.readLine();
 
         System.out.println("Enter new age");
-        int newAge = Integer.parseInt(br.readLine());
+        int newAge = readInt();
+        //int newAge = Integer.parseInt(br.readLine());
 
 
         this.contactService.editContact(oldSurname, newSurname, newName, newPhoneNumber, newAge);
@@ -110,17 +115,14 @@ public class CmdLineServiceImpl implements CmdLineService {
     }
 
     private int readInt() throws IOException {
-
-        int i;
         try {
             // System.out.println("Input number!");
-            String line = this.br.readLine();
-            i = new Integer(line);
+            String line = br.readLine();
+            return ValidationUtil.checkNumber(line);
         } catch (NumberFormatException ex) {
-            System.out.println("Wrong Input!");
+            System.out.println("Wrong Input! You must input number");
             return readInt();
         }
-        return i;
     }
 
 }
