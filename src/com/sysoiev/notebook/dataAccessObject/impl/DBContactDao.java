@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DBContactDao implements ContactDao {
-    private static final String DB_URL = " jdbc:h2:~/test";
+    private static final String DB_URL = "jdbc:h2:tcp://localhost/~/ProgramNum1";
 
     public DBContactDao(){
         try{
@@ -22,7 +22,7 @@ public class DBContactDao implements ContactDao {
             st.execute("CREATE TABLE CLIENT(ID INT PRIMARY KEY AUTO_INCREMENT,\n" +
                     "   NAME VARCHAR(255),AGE INTEGER);");
         } catch(SQLException e){
-            System.out.println("Cant create DB!");
+        e.printStackTrace();
         }
     }
 
