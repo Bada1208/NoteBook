@@ -2,6 +2,7 @@ package com.sysoiev.notebook;
 
 
 import com.sysoiev.notebook.dataAccessObject.ContactDao;
+import com.sysoiev.notebook.dataAccessObject.impl.DBContactDao;
 import com.sysoiev.notebook.dataAccessObject.impl.FileSystemContactDaoImpl;
 import com.sysoiev.notebook.services.ContactService;
 import com.sysoiev.notebook.services.impl.FSContactServiceImpl;
@@ -18,7 +19,7 @@ public class App {
     public static void main(String[] args) throws IOException {
 
         //Создание самого нижнего слоя сервисов  - слой DAO который работает со средствами долгосрочноого хранения информации.
-        ContactDao contactDao = new FileSystemContactDaoImpl();
+        ContactDao contactDao = new DBContactDao();
 
 
         //Создание слоя срвисов, которые хранят бизнесс логику. Логику управления моделями и т.д.
