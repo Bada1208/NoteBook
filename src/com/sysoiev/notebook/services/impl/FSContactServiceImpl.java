@@ -22,7 +22,7 @@ public class FSContactServiceImpl implements ContactService {
 
     @Override
     public void deleteContact(String surName) {
-//		this.contactList.remove(name);
+
     }
 
     @Override

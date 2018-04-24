@@ -10,7 +10,7 @@ public interface ContactDao {
 
     void saveContact(Contact contact);
 
-    void removeContact();
+    void removeContact(String surname);
 
     void showAll();
 }
