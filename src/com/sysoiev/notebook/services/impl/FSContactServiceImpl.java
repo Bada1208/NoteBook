@@ -1,5 +1,7 @@
 package com.sysoiev.notebook.services.impl;
 
+import java.util.List;
+
 import com.sysoiev.notebook.dataAccessObject.ContactDao;
 import com.sysoiev.notebook.model.Contact;
 import com.sysoiev.notebook.services.ContactService;
@@ -22,25 +24,19 @@ public class FSContactServiceImpl implements ContactService {
 
     @Override
     public void deleteContact(String surName) {
-
+        contactDao.removeContact(surName);
     }
 
     @Override
     public void showAllContacts() {
-        contactDao.showAll();
+        final List<Contact> contacts = contactDao.showAll();
+        for (Contact contact : contacts) {
+            System.out.println(contact);
+        }
     }
 
-//    @Override
-//    public void showContacts() {
-//        contactDao.showAll();
-//		for (Contact contact : this.contactList.values()) {
-//			System.out.println(contact);
-//		}
-//    }
-
     public void editContact(String oldSurname, String newSurname, String newName, String newPhoneNumber, int newAge) {
-//		Contact contact = this.contactList.get(name);
-//		contact.setName(newName);
-//		contact.setAge(newAge);
+        Contact contact = new Contact(newSurname, newName, newPhoneNumber, newAge);
+        contactDao.updateContact(oldSurname, contact);
     }
 }

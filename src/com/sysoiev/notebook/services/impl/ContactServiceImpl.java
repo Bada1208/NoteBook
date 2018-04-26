@@ -3,6 +3,7 @@ package com.sysoiev.notebook.services.impl;
 
 import com.sysoiev.notebook.model.Contact;
 import com.sysoiev.notebook.services.ContactService;
+import javafx.collections.ObservableList;
 
 
 import java.util.HashMap;
@@ -13,11 +14,11 @@ public class ContactServiceImpl implements ContactService {
      * Реализация ContactService которая использует Map для хранения данных.
      */
 
-    private Map<String, Contact> contactList = new HashMap<>();
+    private final ObservableList<Object> contactList;
 
     @Override
     public void createContact(String surname, String name, String phoneNumber, int age) {
-        this.contactList.put(surname, new Contact(surname, name, phoneNumber, age));
+        this.contactList.add( new Contact(surname, name, phoneNumber, age));
 
 
         for (Map.Entry<String, Contact> element : contactList.entrySet()) {

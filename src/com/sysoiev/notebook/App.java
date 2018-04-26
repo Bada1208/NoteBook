@@ -1,4 +1,5 @@
 package com.sysoiev.notebook;
+package com.sysoiev.notebook;
 
 
 import com.sysoiev.notebook.dataAccessObject.ContactDao;
@@ -22,7 +23,7 @@ public class App {
         ContactDao contactDao = new DBContactDao();
 
 
-        //Создание слоя срвисов, которые хранят бизнесс логику. Логику управления моделями и т.д.
+        //Создание слоя севисов, которые хранят бизнесс логику. Логику управления моделями и т.д.
         //Обычно эти сервисы используют слой DAO для долгосрочного хранения данных.
         ContactService contactService = new FSContactServiceImpl(contactDao);
 

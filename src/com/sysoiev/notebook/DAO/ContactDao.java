@@ -1,5 +1,7 @@
 package com.sysoiev.notebook.dataAccessObject;
 
+import java.util.List;
+
 import com.sysoiev.notebook.model.Contact;
 
 public interface ContactDao {
@@ -12,5 +14,7 @@ public interface ContactDao {
 
     void removeContact(String surname);
 
-    void showAll();
+    void updateContact(String oldSurname, Contact contact);
+
+    List<Contact> showAll();
 }

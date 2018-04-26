@@ -5,6 +5,7 @@ import com.sysoiev.notebook.model.Contact;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class FileSystemContactDaoImpl implements ContactDao {
@@ -15,12 +16,13 @@ public class FileSystemContactDaoImpl implements ContactDao {
 
     private static final File FILE = new File("data");
     private List<Contact> currentContact = new ArrayList<>();
+
     @Override
     public void saveContact(Contact contact) {
+
         try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(FILE, true)))) {
             writer.println(contact);
             writer.flush();
-            //  writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -38,7 +40,12 @@ public class FileSystemContactDaoImpl implements ContactDao {
     }
 
     @Override
-    public void showAll() {
+    public void updateContact(String oldSurname, Contact contact) {
+
+    }
+
+    @Override
+    public List<Contact> showAll() {
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -48,5 +55,6 @@ public class FileSystemContactDaoImpl implements ContactDao {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return Collections.emptyList();
     }
 }
