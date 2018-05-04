@@ -1,4 +1,4 @@
-package com.sysoiev.notebook.dataAccessObject.impl;
+package com.sysoiev.notebook.DAO.impl;
 
 import com.sysoiev.notebook.dataAccessObject.ContactDao;
 import com.sysoiev.notebook.model.Contact;

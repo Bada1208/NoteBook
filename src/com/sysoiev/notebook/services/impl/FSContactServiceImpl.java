@@ -5,6 +5,8 @@ import java.util.List;
 import com.sysoiev.notebook.dataAccessObject.ContactDao;
 import com.sysoiev.notebook.model.Contact;
 import com.sysoiev.notebook.services.ContactService;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class FSContactServiceImpl implements ContactService {
     /**
@@ -12,6 +14,8 @@ public class FSContactServiceImpl implements ContactService {
      */
 
     private final ContactDao contactDao;
+
+    ObservableList<Contact> list = FXCollections.observableArrayList();
 
     public FSContactServiceImpl(ContactDao contactDao) {
         this.contactDao = contactDao;
@@ -28,11 +32,16 @@ public class FSContactServiceImpl implements ContactService {
     }
 
     @Override
-    public void showAllContacts() {
-        final List<Contact> contacts = contactDao.showAll();
-        for (Contact contact : contacts) {
-            System.out.println(contact);
-        }
+    public ObservableList<Contact> showAllContacts() {
+        list.clear();
+        list.addAll(contactDao.showAll());
+        return list;
+
+
+//        final List<Contact> contacts = contactDao.showAll();
+//        for (Contact contact : contacts) {
+//            System.out.println(contact);
+//        }
     }
 
     public void editContact(String oldSurname, String newSurname, String newName, String newPhoneNumber, int newAge) {

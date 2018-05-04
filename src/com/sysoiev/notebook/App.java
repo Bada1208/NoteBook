@@ -1,10 +1,8 @@
 package com.sysoiev.notebook;
-package com.sysoiev.notebook;
 
 
 import com.sysoiev.notebook.dataAccessObject.ContactDao;
 import com.sysoiev.notebook.dataAccessObject.impl.DBContactDao;
-import com.sysoiev.notebook.dataAccessObject.impl.FileSystemContactDaoImpl;
 import com.sysoiev.notebook.services.ContactService;
 import com.sysoiev.notebook.services.impl.FSContactServiceImpl;
 import com.sysoiev.notebook.view.CmdLineService;
