@@ -12,12 +12,14 @@ public class Program extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("view/scenes/mainScene.fxml"));
         primaryStage.setTitle("Contact Book");
+        primaryStage.setMinHeight(600);
+        primaryStage.setMinWidth(400);
         primaryStage.setScene(new Scene(root));
         primaryStage.setResizable(false);
         primaryStage.show();
     }
 
     public static void main(String[] args) {
-        launch();
+        launch(args);
     }
 }

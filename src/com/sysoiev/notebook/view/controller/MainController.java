@@ -5,12 +5,18 @@ import com.sysoiev.notebook.model.Contact;
 import com.sysoiev.notebook.services.ContactService;
 import com.sysoiev.notebook.services.impl.ContactServiceImpl;
 import com.sysoiev.notebook.services.impl.FSContactServiceImpl;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
-import java.awt.*;
+import java.io.IOException;
 
 public class MainController {
 
@@ -20,23 +26,37 @@ public class MainController {
         this.contactService = new FSContactServiceImpl(new DBContactDao());
     }
 
-    @FXML
-    private TextField inputSurname;
+    public void showDialog(ActionEvent actionEvent) {
+        try {
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("../scenes/edit.fxml"));
+            stage.setTitle("Peдактирование записи");
+            stage.setMinHeight(150);
+            stage.setMinWidth(300);
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
-    private TextField inputName;
+    private Button btnAdd;
 
     @FXML
-    private TextField inputphonenumber;
+    private Button btnEdit;
 
     @FXML
-    private TextField inputAge;
+    private Button btnSearch;
 
     @FXML
-    private Button createButton;
+    private Button btnDelete;
 
     @FXML
-    private TableView<Contact> table;
+    private TableView tableAddressBook;
 
     @FXML
     private TableColumn<Contact, String> surnameColumn;
@@ -50,13 +70,16 @@ public class MainController {
     @FXML
     private TableColumn<Contact, Integer> ageColumn;
 
-    public void createContact() {
-        String surName = inputName.getText();
-        String name = inputName.getText();
-        String phoneNumber = inputName.getText();
-        String age = inputAge.getText();
+    @FXML
+    private Label labelCount;
 
-        contactService.createContact(surName, name, phoneNumber, new Integer(age));
+    public void createContact() {
+        String surname = surnameColumn.getText();
+        String name = nameColumn.getText();
+        String phoneNumber = phonenumberColumn.getText();
+        String age = ageColumn.getText();
+
+        contactService.createContact(surname, name, phoneNumber, new Integer(age));
     }
 
     @FXML
@@ -66,7 +89,9 @@ public class MainController {
         phonenumberColumn.setCellValueFactory(new PropertyValueFactory<>("phonenumber"));
         ageColumn.setCellValueFactory(new PropertyValueFactory<>("age"));
 
-        table.setItems(contactService.showAllContacts());
+        tableAddressBook.setItems(contactService.showAllContacts());
     }
-
+    private void updateCountLabel() {
+        labelCount.setText(resourceBundle.getString("count") + ": " + addressBookImpl.getContactList().size());
+    }
 }
