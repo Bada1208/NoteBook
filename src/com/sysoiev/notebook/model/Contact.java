@@ -1,5 +1,8 @@
 package com.sysoiev.notebook.model;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 import java.util.Objects;
 
 public class Contact {
@@ -10,16 +13,20 @@ public class Contact {
      * Это логические сущности которые управляются слоем сервисов бизнес логики.
      */
 
-    private String surname;
-    private String name;
-    private String phoneNumber;
-    private int age;
+    private SimpleStringProperty surname;
+    private SimpleStringProperty name;
+    private SimpleStringProperty phoneNumber;
+    private SimpleIntegerProperty age;
+
+    public Contact(){
+
+    }
 
     public Contact(String surname, String name, String phoneNumber, int age) {
-        this.surname = surname;
-        this.name = name;
-        this.phoneNumber = phoneNumber;
-        this.age = age;
+        this.surname = new SimpleStringProperty(surname);
+        this.name = new SimpleStringProperty(name);
+        this.phoneNumber = new SimpleStringProperty(phoneNumber);
+        this.age = new SimpleIntegerProperty(age);
     }
 
     public String getSurname() {

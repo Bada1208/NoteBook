@@ -5,6 +5,7 @@ import com.sysoiev.notebook.model.Contact;
 import com.sysoiev.notebook.services.ContactService;
 import com.sysoiev.notebook.services.impl.ContactServiceImpl;
 import com.sysoiev.notebook.services.impl.FSContactServiceImpl;
+import javafx.beans.property.ObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,10 +18,14 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 
 public class MainController {
 
     private ContactService contactService;
+
+
+    private Stage editDialogStage
 
     public MainController() {
         this.contactService = new FSContactServiceImpl(new DBContactDao());
@@ -59,6 +64,9 @@ public class MainController {
     private TableView tableAddressBook;
 
     @FXML
+    private TextField txtSearch;
+
+    @FXML
     private TableColumn<Contact, String> surnameColumn;
 
     @FXML
@@ -70,8 +78,6 @@ public class MainController {
     @FXML
     private TableColumn<Contact, Integer> ageColumn;
 
-    @FXML
-    private Label labelCount;
 
     public void createContact() {
         String surname = surnameColumn.getText();
@@ -84,6 +90,7 @@ public class MainController {
 
     @FXML
     public void initialize() {
+       // tableAddressBook.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);// in a case when we want to choose few notes
         surnameColumn.setCellValueFactory(new PropertyValueFactory<>("surname"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         phonenumberColumn.setCellValueFactory(new PropertyValueFactory<>("phonenumber"));
@@ -91,7 +98,47 @@ public class MainController {
 
         tableAddressBook.setItems(contactService.showAllContacts());
     }
-    private void updateCountLabel() {
-        labelCount.setText(resourceBundle.getString("count") + ": " + addressBookImpl.getContactList().size());
+
+    public void actionButtonPressed(ActionEvent actionEvent) {
+
+        Object source = actionEvent.getSource();
+
+        // если нажата не кнопка - выходим из метода
+        if (!(source instanceof Button)) {
+            return;
+        }
+        Button clickedButton = (Button) source;
+        Contact selectedContact = (Contact) tableAddressBook.getSelectionModel().getSelectedItem();
+
+
+        switch (clickedButton.getId()) {
+            case "btnAdd":
+                System.out.println("add " + selectedContact);
+//                editDialogController.setPerson(new Person());
+//                showDialog();
+//                addressBookImpl.add(editDialogController.getPerson());
+                break;
+
+            case "btnEdit":
+                System.out.println("edit " + selectedContact);
+//                if (!personIsSelected(selectedPerson)) {
+//                    return;
+//                }
+//
+//                editDialogController.setPerson(selectedPerson);
+//                showDialog();
+                break;
+
+            case "btnDelete":
+                System.out.println("delete " + selectedContact);
+//                if (!personIsSelected(selectedPerson)) {
+//                    return;
+//                }
+//
+//                addressBookImpl.delete(selectedPerson);
+                break;
+        }
+
+
     }
 }
