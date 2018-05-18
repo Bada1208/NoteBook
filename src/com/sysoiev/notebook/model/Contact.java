@@ -13,7 +13,7 @@ public class Contact {
      * Это логические сущности которые управляются слоем сервисов бизнес логики.
      */
 
-    private SimpleStringProperty surname;
+    private SimpleStringProperty surname ;
     private SimpleStringProperty name;
     private SimpleStringProperty phoneNumber;
     private SimpleIntegerProperty age;
@@ -30,36 +30,53 @@ public class Contact {
     }
 
     public String getSurname() {
-        return surname;
+        return surname.get();
     }
 
     public void setSurname(String surname) {
-        this.surname = surname;
+        this.surname.set(surname);
     }
 
     public String getName() {
-        return name;
+        return name.get();
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name.set(name);
     }
 
     public String getPhoneNumber() {
-        return phoneNumber;
+        return phoneNumber.get();
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+        this.phoneNumber.set(phoneNumber);
     }
 
     public int getAge() {
-        return age;
+        return age.get();
     }
 
     public void setAge(int age) {
-        this.age = age;
+        this.age.set(age);
     }
+
+    public SimpleStringProperty surnameProperty() {
+        return surname;
+    }
+
+    public SimpleStringProperty nameProperty() {
+        return name;
+    }
+
+    public SimpleStringProperty phoneProperty() {
+        return phoneNumber;
+    }
+
+    public SimpleIntegerProperty ageProperty() {
+        return age;
+    }
+
 
     @Override
     public boolean equals(Object o) {

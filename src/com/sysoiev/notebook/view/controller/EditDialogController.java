@@ -38,8 +38,9 @@ public class EditDialogController implements Initializable {
         Stage stage = (Stage) source.getScene().getWindow();
         stage.hide();
     }
+
     public void setPerson(Contact contact) {
-        if (contact == null){
+        if (contact == null) {
             return;
         }
         this.contact = contact;
@@ -47,6 +48,14 @@ public class EditDialogController implements Initializable {
         txtName.setText(contact.getName());
         txtPhone.setText(contact.getPhoneNumber());
         txtAge.setText(String.valueOf(contact.getAge()));
+    }
+
+    public void actionSave(ActionEvent actionEvent) {
+        contact.setPhoneNumber(txtPhone.getText());
+        contact.setSurname(txtSurname.getText());
+        contact.setName(txtName.getText());
+        contact.setAge(Integer.parseInt(txtAge.getText()));
+        actionClose(actionEvent);
     }
 
     public Contact getContact() {
