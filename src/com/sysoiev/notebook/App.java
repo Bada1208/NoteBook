@@ -1,8 +1,8 @@
 package com.sysoiev.notebook;
 
 
-import com.sysoiev.notebook.dataAccessObject.ContactDao;
-import com.sysoiev.notebook.dataAccessObject.impl.DBContactDao;
+import com.sysoiev.notebook.dao.ContactDao;
+import com.sysoiev.notebook.dao.impl.DBContactDaoImpl;
 import com.sysoiev.notebook.services.ContactService;
 import com.sysoiev.notebook.services.impl.FSContactServiceImpl;
 import com.sysoiev.notebook.view.CmdLineService;
@@ -17,12 +17,12 @@ public class App {
 
     public static void main(String[] args) throws IOException {
 
-        //Создание самого нижнего слоя сервисов  - слой DAO который работает со средствами долгосрочноого хранения информации.
-        ContactDao contactDao = new DBContactDao();
+        //Создание самого нижнего слоя сервисов  - слой dao который работает со средствами долгосрочноого хранения информации.
+        ContactDao contactDao = new DBContactDaoImpl();
 
 
         //Создание слоя севисов, которые хранят бизнесс логику. Логику управления моделями и т.д.
-        //Обычно эти сервисы используют слой DAO для долгосрочного хранения данных.
+        //Обычно эти сервисы используют слой dao для долгосрочного хранения данных.
         ContactService contactService = new FSContactServiceImpl(contactDao);
 
         //Создание сервисов слоя представления. Самые высокоуровневые сервиса которые управляют сервисами бизнесс логики.

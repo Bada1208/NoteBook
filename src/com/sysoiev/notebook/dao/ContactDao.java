@@ -1,4 +1,4 @@
-package com.sysoiev.notebook.dataAccessObject;
+package com.sysoiev.notebook.dao;
 
 import java.util.List;
 

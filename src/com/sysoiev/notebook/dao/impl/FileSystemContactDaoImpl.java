@@ -1,6 +1,6 @@
-package com.sysoiev.notebook.DAO.impl;
+package com.sysoiev.notebook.dao.impl;
 
-import com.sysoiev.notebook.dataAccessObject.ContactDao;
+import com.sysoiev.notebook.dao.ContactDao;
 import com.sysoiev.notebook.model.Contact;
 
 import java.io.*;

@@ -1,8 +1,6 @@
 package com.sysoiev.notebook.services.impl;
 
-import java.util.List;
-
-import com.sysoiev.notebook.dataAccessObject.ContactDao;
+import com.sysoiev.notebook.dao.ContactDao;
 import com.sysoiev.notebook.model.Contact;
 import com.sysoiev.notebook.services.ContactService;
 import javafx.collections.FXCollections;

@@ -1,16 +1,10 @@
 package com.sysoiev.notebook.view.controller;
 
-import com.sun.javafx.tools.packager.Main;
-import com.sysoiev.notebook.dataAccessObject.impl.DBContactDao;
 import com.sysoiev.notebook.model.Contact;
 import com.sysoiev.notebook.services.ContactService;
-import com.sysoiev.notebook.services.impl.ContactServiceImpl;
 import com.sysoiev.notebook.services.impl.FSContactServiceImpl;
-import javafx.beans.property.ObjectProperty;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -18,14 +12,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
-import javax.print.DocFlavor;
-import java.io.IOException;
-import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -45,7 +34,7 @@ public class MainController {
     private ResourceBundle resourceBundle;
 
     public MainController() {
-        this.contactService = new FSContactServiceImpl(new DBContactDao());
+        this.contactService = new FSContactServiceImpl(new com.sysoiev.notebook.dao.impl.DBContactDaoImpl());
     }
 
     public void showDialog(ActionEvent actionEvent) {

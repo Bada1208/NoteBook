@@ -1,6 +1,6 @@
-package com.sysoiev.notebook.dataAccessObject.impl;
+package com.sysoiev.notebook.dao.impl;
 
-import com.sysoiev.notebook.dataAccessObject.ContactDao;
+import com.sysoiev.notebook.dao.ContactDao;
 import com.sysoiev.notebook.model.Contact;
 
 import java.sql.*;
@@ -9,15 +9,15 @@ import java.util.List;
 
 import org.h2.tools.DeleteDbFiles;
 
-public class DBContactDao implements ContactDao {
+public class DBContactDaoImpl implements ContactDao {
 
-    private static final String DB_URL = "jdbc:h2:~/test";
     private static final String USER = "sa";
+    private static final String DB_URL = "jdbc:h2:~/test";
     private static final String PASSWORD = "";
 
     private int counter = 0;
 
-    public DBContactDao() {
+    public DBContactDaoImpl() {
         DeleteDbFiles.execute("~", "test", true);
         try (Connection connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
              Statement st = connection.createStatement()) {

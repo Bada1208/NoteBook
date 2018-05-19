@@ -1,8 +1,10 @@
 package com.sysoiev.notebook.view.impl;
 
+import com.sysoiev.notebook.model.Contact;
 import com.sysoiev.notebook.services.ContactService;
 import com.sysoiev.notebook.util.ValidationUtil;
 import com.sysoiev.notebook.view.CmdLineService;
+import javafx.collections.ObservableList;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -72,9 +74,9 @@ public class CmdLineServiceImpl implements CmdLineService {
         String phoneNumber = br.readLine();
         System.out.println("Enter age");
         //int age = Integer.parseInt(br.readLine());
-        int ageN = readInt();
+        int ageNumber = readInt();
 
-        this.contactService.createContact(surName, name, phoneNumber, ageN);
+        this.contactService.createContact(surName, name, phoneNumber, ageNumber);
     }
 
     private void deleteContact() throws IOException {
@@ -85,11 +87,9 @@ public class CmdLineServiceImpl implements CmdLineService {
 
     private void showAllContacts() {
         System.out.println("The Contacts of the Phonebook are:");
-        this.contactService.showAllContacts();
-
-
+        ObservableList<Contact> contacts = this.contactService.showAllContacts();
+        System.out.println(contacts);
     }
-
 
     private void editContact() throws IOException {
 
