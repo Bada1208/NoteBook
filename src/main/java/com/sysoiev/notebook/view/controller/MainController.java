@@ -1,5 +1,6 @@
 package com.sysoiev.notebook.view.controller;
 
+import com.sysoiev.notebook.dao.impl.H2ContactDaoImpl;
 import com.sysoiev.notebook.model.Contact;
 import com.sysoiev.notebook.services.ContactService;
 import com.sysoiev.notebook.services.impl.FSContactServiceImpl;
@@ -34,7 +35,7 @@ public class MainController {
     private ResourceBundle resourceBundle;
 
     public MainController() {
-        this.contactService = new FSContactServiceImpl(new com.sysoiev.notebook.dao.impl.DBContactDaoImpl());
+        this.contactService = new FSContactServiceImpl(new H2ContactDaoImpl());
     }
 
     public void showDialog(ActionEvent actionEvent) {
