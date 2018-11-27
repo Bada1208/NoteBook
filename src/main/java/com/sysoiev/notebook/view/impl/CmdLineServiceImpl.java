@@ -16,7 +16,7 @@ public class CmdLineServiceImpl implements CmdLineService {
      */
 
     private ContactService contactService;
-    private BufferedReader br ;
+    private BufferedReader br;
 
     public CmdLineServiceImpl(ContactService contactService) {
         this.contactService = contactService;
