@@ -19,8 +19,13 @@
     <orderEntry type="library" exported="" name="h2-1.4.197" level="project" />
     <orderEntry type="library" name="Maven: com.h2database:h2:1.4.196" level="project" />
     <orderEntry type="library" name="Maven: org.postgresql:postgresql:9.3-1100-jdbc41" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-core:${spring.framework}" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-context:${spring.framework}" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:${spring.framework}" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-core:5.0.7.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-jcl:5.0.7.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-context:5.0.7.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.0.7.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.0.7.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-expression:5.0.7.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:5.0.7.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.0.7.RELEASE" level="project" />
   </component>
 </module>
