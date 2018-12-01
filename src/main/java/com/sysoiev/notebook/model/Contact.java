@@ -1,6 +1,8 @@
 package com.sysoiev.notebook.model;
 
 
+import org.springframework.context.annotation.Bean;
+
 import java.util.Objects;
 
 public class Contact {

@@ -1,6 +1,6 @@
 package com.sysoiev.notebook.dao.impl;
 
-import com.sysoiev.notebook.dao.ContactDao;
+import com.sysoiev.notebook.dao.SpringContactDao;
 import com.sysoiev.notebook.model.Contact;
 import com.sysoiev.notebook.model.ContactMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ import java.util.List;
  */
 
 @Component
-public class SpringContactDaoImpl implements ContactDao {
+public class SpringContactDaoImpl implements SpringContactDao {
 
     Contact contact;
     JdbcTemplate jdbcTemplate;
@@ -37,20 +37,20 @@ public class SpringContactDaoImpl implements ContactDao {
     }
 
     @Override
-    public void saveContact(Contact contact) {
+    public boolean saveContact(Contact contact) {
         return jdbcTemplate.update(SQL_SAVE_CONTACT, contact.getSurname(), contact.getName(),
-                contact.getPhoneNumber(), contact.getAge() > 0);
+                contact.getPhoneNumber(), contact.getAge()) > 0;
     }
 
     @Override
-    public void removeContact(String surname) {
-        return jdbcTemplate.update(SQL_REMOVE_CONTACT, contact.getSurname());
+    public boolean removeContact(String surname) {
+        return jdbcTemplate.update(SQL_REMOVE_CONTACT, contact.getSurname()) > 0;
     }
 
     @Override
-    public void updateContact(String oldSurname, Contact contact) {
+    public boolean updateContact(String oldSurname, Contact contact) {
         return jdbcTemplate.update(SQL_UPDATE_CONTACT, contact.getSurname(), contact.getName(),
-                contact.getPhoneNumber(), contact.getAge());
+                contact.getPhoneNumber(), contact.getAge()) > 0;
     }
 
     @Override
@@ -58,14 +58,4 @@ public class SpringContactDaoImpl implements ContactDao {
         return jdbcTemplate.query(SQL_SHOW_ALL, new ContactMapper());
     }
 
-
-   /* public boolean updatePerson(Person person) {
-        return jdbcTemplate.update(SQL_UPDATE_PERSON, person.getFirstName(), person.getLastName(), person.getAge(),
-                person.getId()) > 0;
-    }
-
-    public boolean createPerson(Person person) {
-        return jdbcTemplate.update(SQL_INSERT_PERSON, person.getId(), person.getFirstName(), person.getLastName(),
-                person.getAge()) > 0;
-    }*/
 }
