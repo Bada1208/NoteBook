@@ -10,9 +10,18 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
-@Configuration//says that this class is configuration for Spring context.
-@ComponentScan("com.sysoiev.notebook")//specifies the package to scan for component classes.
-@PropertySource("classpath:database.properties")//says that properties will be read from database.properties file.
+/**
+ * Next step is to create spring configuration class to define DataSource bean. I am using java
+ * based configuration, you can also do this using spring bean configuration xml file.
+ *
+ * @Configuration – says that this class is configuration for Spring context.
+ * @ComponentScan("com.sysoiev.notebook")- specifies the package to scan for component classes.
+ * @PropertySource(“classpath:database.properties”)- says that properties will be read from database.properties file.
+ */
+
+@Configuration
+@ComponentScan("com.sysoiev.notebook")
+@PropertySource("classpath:database.properties")
 public class AppSpringDataConfig {
     @Autowired
     Environment environment;
