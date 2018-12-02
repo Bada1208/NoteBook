@@ -19,7 +19,7 @@ public class ContactMapper implements RowMapper<Contact> {
         Contact contact = new Contact();
         contact.setSurname(resultSet.getString("surname"));
         contact.setName(resultSet.getString("name"));
-        contact.setPhoneNumber(resultSet.getString("phone_number"));
+        contact.setPhoneNumber(resultSet.getString("phoneNumber"));
         contact.setAge(resultSet.getInt("age"));
         return contact;
     }

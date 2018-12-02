@@ -12,5 +12,5 @@ public interface SpringContactDao {
 
     boolean updateContact(String oldSurname, Contact contact);
 
-    List<Contact> showAll();
+    List<Contact> getAllContacts();
 }

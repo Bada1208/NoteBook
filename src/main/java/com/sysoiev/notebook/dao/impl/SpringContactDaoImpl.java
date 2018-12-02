@@ -26,10 +26,10 @@ public class SpringContactDaoImpl implements SpringContactDao {
     Contact contact;
     JdbcTemplate jdbcTemplate;
 
-    private final String SQL_REMOVE_CONTACT = "DELETE FROM CLIENT WHERE SURNAME=?;";
-    private final String SQL_UPDATE_CONTACT = "UPDATE CLIENT SET SURNAME=?, NAME=?, PHONENUMBER=?, AGE=? WHERE SURNAME=?";
-    private final String SQL_SHOW_ALL = "SELECT * FROM CLIENT ORDER BY ID";
-    private final String SQL_SAVE_CONTACT = "INSERT INTO CLIENT VALUES(?, ?, ?, ?, ?);";
+    private final String SQL_REMOVE_CONTACT = "DELETE FROM clientspring WHERE SURNAME=?;";
+    private final String SQL_UPDATE_CONTACT = "UPDATE clientspring SET SURNAME=?, NAME=?, PHONENUMBER=?, AGE=? WHERE SURNAME=?";
+    private final String SQL_SHOW_ALL = "SELECT * FROM clientspring ORDER BY ID";
+    private final String SQL_SAVE_CONTACT = "INSERT INTO clientspring VALUES(?, ?, ?, ?, ?);";
 
     @Autowired
     public SpringContactDaoImpl(DataSource dataSource) {
@@ -54,7 +54,7 @@ public class SpringContactDaoImpl implements SpringContactDao {
     }
 
     @Override
-    public List<Contact> showAll() {
+    public List<Contact> getAllContacts() {
         return jdbcTemplate.query(SQL_SHOW_ALL, new ContactMapper());
     }
 

@@ -26,10 +26,10 @@ public class AppSpringDataConfig {
     @Autowired
     Environment environment;
 
-    private final String DB_URL = "jdbc:postgresql://localhost:5432/postgres";
-    private final String USER = "postgres";
+    private final String DB_URL = "url";
+    private final String USER = "user";
     private final String DRIVER = "driver";
-    private final String PASSWORD = "postgres";
+    private final String PASSWORD = "password";
 
     @Bean
     DataSource dataSource() {
