@@ -5,11 +5,13 @@ import com.sysoiev.notebook.services.ContactService;
 import com.sysoiev.notebook.util.ValidationUtil;
 import com.sysoiev.notebook.view.CmdLineService;
 import javafx.collections.ObservableList;
+import com.sysoiev.notebook.dao.SpringContactDao;
+import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
+@Component
 public class CmdLineServiceImpl implements CmdLineService {
     /**
      * Сервис реализующий логику предоставления и считывания информации в/из консоль.
@@ -31,7 +33,8 @@ public class CmdLineServiceImpl implements CmdLineService {
             String line = br.readLine();
             switch (line) {
                 case "1": {
-                    createContact();
+                    //createContact();
+                    saveContact();
                     break;
                 }
                 case "2": {
