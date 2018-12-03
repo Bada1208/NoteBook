@@ -13,13 +13,14 @@ import java.io.IOException;
 
 public class SpringDataApp {
 
-    private static ContactService contactService;
+     static ContactService contactService;
 
     public static void main(String[] args) throws IOException {
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(AppSpringDataConfig.class);
 
         SpringContactDao springContactDao = context.getBean(SpringContactDao.class);
+        CmdLineService cmdLineService = context.getBean(CmdLineService.class);
         CmdLineService cmd = new CmdLineServiceImpl(contactService);
 
 

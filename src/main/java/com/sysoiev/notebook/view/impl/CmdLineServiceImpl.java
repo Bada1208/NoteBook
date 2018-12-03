@@ -6,16 +6,26 @@ import com.sysoiev.notebook.util.ValidationUtil;
 import com.sysoiev.notebook.view.CmdLineService;
 import javafx.collections.ObservableList;
 import com.sysoiev.notebook.dao.SpringContactDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import javax.sql.DataSource;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
 @Component
 public class CmdLineServiceImpl implements CmdLineService {
+    JdbcTemplate jdbcTemplate;
+
     /**
      * Сервис реализующий логику предоставления и считывания информации в/из консоль.
      */
+    @Autowired
+    public CmdLineServiceImpl(DataSource dataSource) {
+        jdbcTemplate = new JdbcTemplate(dataSource);
+    }
 
     private ContactService contactService;
     private BufferedReader br;
@@ -33,8 +43,7 @@ public class CmdLineServiceImpl implements CmdLineService {
             String line = br.readLine();
             switch (line) {
                 case "1": {
-                    //createContact();
-                    saveContact();
+                    createContact();
                     break;
                 }
                 case "2": {
