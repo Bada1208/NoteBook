@@ -21,10 +21,10 @@ public class SpringDataApp {
 
         SpringContactDao springContactDao = context.getBean(SpringContactDao.class);
         CmdLineService cmdLineService = context.getBean(CmdLineService.class);
-        CmdLineService cmd = new CmdLineServiceImpl(contactService);
+        //CmdLineService cmd = new CmdLineServiceImpl(contactService);
 
 
-        cmd.runMenu();
+        cmdLineService.runMenu();
         /*System.out.println("List of contacts is:");
 
         for (Contact c : springContactDao.getAllContacts()) {
