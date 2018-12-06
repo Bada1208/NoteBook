@@ -17,7 +17,7 @@ public class App {
      * Начало программы. Тут запускается программа, создаются все сервиса и устанавливаются связи между ними.
      */
     public static void main(String[] args) throws IOException {
-
+/*
         //Создание самого нижнего слоя сервисов  - слой dao который работает со средствами долгосрочноого хранения информации.
         ContactDao contactDao = new PostgresContactDaoImpl();
 
@@ -30,6 +30,6 @@ public class App {
         CmdLineService cmd = new CmdLineServiceImpl(contactService);
 
         //Непосредственный запуск графического интерфейса и программы
-        cmd.runMenu();
+        cmd.runMenu();*/
     }
 }

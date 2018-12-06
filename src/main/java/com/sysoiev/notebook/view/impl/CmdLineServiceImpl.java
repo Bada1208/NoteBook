@@ -7,33 +7,41 @@ import com.sysoiev.notebook.view.CmdLineService;
 import javafx.collections.ObservableList;
 import com.sysoiev.notebook.dao.SpringContactDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
+
+/**
+ * Сервис реализующий логику предоставления и считывания информации в/из консоль.
+ */
 
 @Component
 public class CmdLineServiceImpl implements CmdLineService {
     JdbcTemplate jdbcTemplate;
 
-    /**
-     * Сервис реализующий логику предоставления и считывания информации в/из консоль.
-     */
+
+    @Autowired
+    private ContactService contactService;
+
+    @Autowired
+    private BufferedReader br;
+
     @Autowired
     public CmdLineServiceImpl(DataSource dataSource) {
         jdbcTemplate = new JdbcTemplate(dataSource);
-    }
-
-    private ContactService contactService;
-    private BufferedReader br;
-
-    public CmdLineServiceImpl(ContactService contactService) {
         this.contactService = contactService;
         this.br = new BufferedReader(new InputStreamReader(System.in));
     }
+
+/*
+    //this constructor for App
+    public CmdLineServiceImpl(ContactService contactService) {
+        this.contactService = contactService;
+        this.br = new BufferedReader(new InputStreamReader(System.in));
+    }*/
 
     @Override
     public void runMenu() throws IOException {
