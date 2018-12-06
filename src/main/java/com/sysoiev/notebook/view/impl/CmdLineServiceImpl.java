@@ -86,13 +86,13 @@ public class CmdLineServiceImpl implements CmdLineService {
     }
 
     private void createContact() throws IOException {
-        System.out.println("Enter surname");
+        System.out.println("Enter surname :");
         String surName = br.readLine();
-        System.out.println("Enter name");
+        System.out.println("Enter name :");
         String name = br.readLine();
-        System.out.println("Enter phone number");
+        System.out.println("Enter phone number :");
         String phoneNumber = br.readLine();
-        System.out.println("Enter age");
+        System.out.println("Enter age :");
         //int age = Integer.parseInt(br.readLine());
         int ageNumber = readInt();
 
@@ -100,7 +100,7 @@ public class CmdLineServiceImpl implements CmdLineService {
     }
 
     private void deleteContact() throws IOException {
-        System.out.println("Enter surname in order to remove .");
+        System.out.println("Enter surname in order to remove :");
         String surname = br.readLine();
         this.contactService.deleteContact(surname);
     }
@@ -113,19 +113,19 @@ public class CmdLineServiceImpl implements CmdLineService {
 
     private void editContact() throws IOException {
 
-        System.out.println("Enter surname of modified contact");
+        System.out.println("Enter surname of modified contact :");
         String oldSurname = br.readLine();
 
-        System.out.println("Enter new surname");
+        System.out.println("Enter new surname :");
         String newSurname = br.readLine();
 
-        System.out.println("Enter new name");
+        System.out.println("Enter new name :");
         String newName = br.readLine();
 
-        System.out.println("Enter new phone");
+        System.out.println("Enter new phone :");
         String newPhoneNumber = br.readLine();
 
-        System.out.println("Enter new age");
+        System.out.println("Enter new age :");
         int newAge = readInt();
         //int newAge = Integer.parseInt(br.readLine());
 
@@ -140,7 +140,7 @@ public class CmdLineServiceImpl implements CmdLineService {
             String line = br.readLine();
             return ValidationUtil.checkNumber(line);
         } catch (NumberFormatException ex) {
-            System.out.println("Wrong Input! You must input number");
+            System.out.println("Wrong Input! You must input number,please.");
             return readInt();
         }
     }
