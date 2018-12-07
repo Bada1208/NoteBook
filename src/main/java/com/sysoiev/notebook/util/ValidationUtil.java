@@ -12,8 +12,8 @@ public class ValidationUtil {
 
 
     /**
-     * Метод который преобразовывает строку в число. Выбрасывает NumberFormatException при неудачи,
-     * который необходимо обработать.
+     * Метод который преобразовывает строку в число. Выбрасывает NumberFormatException при неудаче,
+     * которую необходимо обработать.
      */
     static public int checkNumber(String number) {
         return new Integer(number);

@@ -28,6 +28,7 @@ public class CmdLineServiceImpl implements CmdLineService {
 
     @Autowired
     private BufferedReader br;
+    // private Contact contact;
 
     @Autowired
     public CmdLineServiceImpl(DataSource dataSource) {
@@ -106,7 +107,7 @@ public class CmdLineServiceImpl implements CmdLineService {
     }
 
     private void showAllContacts() {
-        System.out.println("The Contacts of the Phonebook are:");
+        System.out.println("The Contacts of the Notebook are :");
         ObservableList<Contact> contacts = this.contactService.showAllContacts();
         System.out.println(contacts);
     }

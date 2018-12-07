@@ -22,7 +22,7 @@ public class SpringDataApp {
 
         CmdLineService cmdLineService = context.getBean(CmdLineService.class);
 
-        //it launch menu in order to enter data from console
+        //it launches menu in order to enter data from console
         cmdLineService.runMenu();
 
         context.close();

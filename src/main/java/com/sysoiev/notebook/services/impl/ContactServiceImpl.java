@@ -36,7 +36,7 @@ public class ContactServiceImpl implements ContactService {
 
     @Override
     public void deleteContact(String surName) {
-        // this.contactList.remove(surName);
+         this.contactList.remove(surName);
     }
 
     @Override
