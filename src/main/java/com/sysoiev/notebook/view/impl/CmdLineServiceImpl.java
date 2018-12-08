@@ -88,7 +88,7 @@ public class CmdLineServiceImpl implements CmdLineService {
 
     private void createContact() throws IOException {
         System.out.println("Enter surname :");
-        String surName = br.readLine();
+        String surname = br.readLine();
         System.out.println("Enter name :");
         String name = br.readLine();
         System.out.println("Enter phone number :");
@@ -97,7 +97,7 @@ public class CmdLineServiceImpl implements CmdLineService {
         //int age = Integer.parseInt(br.readLine());
         int ageNumber = readInt();
 
-        this.contactService.createContact(surName, name, phoneNumber, ageNumber);
+        this.contactService.createContact(surname, name, phoneNumber, ageNumber);
     }
 
     private void deleteContact() throws IOException {
