@@ -18,7 +18,7 @@ public class SpringDataApp {
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(AppSpringDataConfig.class);
 
-        SpringContactDao springContactDao = context.getBean(SpringContactDao.class);
+       // SpringContactDao springContactDao = context.getBean(SpringContactDao.class);
 
         CmdLineService cmdLineService = context.getBean(CmdLineService.class);
 

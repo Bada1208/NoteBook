@@ -1,5 +1,6 @@
 package com.sysoiev.notebook.view.impl;
 
+import com.sysoiev.notebook.dao.impl.SpringContactDaoImpl;
 import com.sysoiev.notebook.model.Contact;
 import com.sysoiev.notebook.services.ContactService;
 import com.sysoiev.notebook.util.ValidationUtil;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.io.*;
+import java.util.List;
 
 /**
  * Сервис реализующий логику предоставления и считывания информации в/из консоль.
@@ -22,9 +24,10 @@ import java.io.*;
 public class CmdLineServiceImpl implements CmdLineService {
     JdbcTemplate jdbcTemplate;
 
-
+    /*@Autowired
+    private ContactService contactService;*/
     @Autowired
-    private ContactService contactService;
+    private SpringContactDao springContactDao;
 
     @Autowired
     private BufferedReader br;
@@ -33,7 +36,7 @@ public class CmdLineServiceImpl implements CmdLineService {
     @Autowired
     public CmdLineServiceImpl(DataSource dataSource) {
         jdbcTemplate = new JdbcTemplate(dataSource);
-        this.contactService = contactService;
+        this.springContactDao = new SpringContactDaoImpl(dataSource);
         this.br = new BufferedReader(new InputStreamReader(System.in));
     }
 
@@ -95,20 +98,22 @@ public class CmdLineServiceImpl implements CmdLineService {
         String phoneNumber = br.readLine();
         System.out.println("Enter age :");
         //int age = Integer.parseInt(br.readLine());
-        int ageNumber = readInt();
+        int age = readInt();
 
-        this.contactService.createContact(surname, name, phoneNumber, ageNumber);
+        //this.contactService.createContact(surname, name, phoneNumber, ageNumber);
+        this.springContactDao.createContact(surname, name, phoneNumber, age);
     }
 
     private void deleteContact() throws IOException {
         System.out.println("Enter surname in order to remove :");
         String surname = br.readLine();
-        this.contactService.deleteContact(surname);
+        this.springContactDao.deleteContact(surname);
     }
 
     private void showAllContacts() {
         System.out.println("The Contacts of the Notebook are :");
-        ObservableList<Contact> contacts = this.contactService.showAllContacts();
+        //Observable
+        List<Contact> contacts = this.springContactDao.showAllContacts();
         System.out.println(contacts);
     }
 
@@ -131,7 +136,7 @@ public class CmdLineServiceImpl implements CmdLineService {
         //int newAge = Integer.parseInt(br.readLine());
 
 
-        this.contactService.editContact(oldSurname, newSurname, newName, newPhoneNumber, newAge);
+        this.springContactDao.editContact(oldSurname, newSurname, newName, newPhoneNumber, newAge);
 
     }
 
