@@ -2,6 +2,8 @@ package com.sysoiev.notebook.config;
 
 import javax.sql.DataSource;
 
+import com.sysoiev.notebook.dao.SpringContactDao;
+import com.sysoiev.notebook.dao.impl.SpringContactDaoImpl;
 import com.sysoiev.notebook.services.ContactService;
 import com.sysoiev.notebook.services.impl.ContactServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +54,7 @@ public class AppSpringDataConfig {
     }
     //from CmdLineServiceImpl class
     @Bean
-    public ContactService contactService() throws NullPointerException{
-        return new ContactServiceImpl();
+    public SpringContactDao springContactDao(DataSource dataSource) throws NullPointerException{
+        return new SpringContactDaoImpl(dataSource);
     }
 }
