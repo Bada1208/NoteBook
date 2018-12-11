@@ -23,6 +23,7 @@ import java.util.List;
 @Component
 public class CmdLineServiceImpl implements CmdLineService {
     JdbcTemplate jdbcTemplate;
+    Contact contact;
 
     /*@Autowired
     private ContactService contactService;*/
@@ -36,7 +37,7 @@ public class CmdLineServiceImpl implements CmdLineService {
     @Autowired
     public CmdLineServiceImpl(DataSource dataSource) {
         jdbcTemplate = new JdbcTemplate(dataSource);
-        this.springContactDao = new SpringContactDaoImpl(dataSource);
+        //this.springContactDao = new SpringContactDaoImpl(dataSource);
         this.br = new BufferedReader(new InputStreamReader(System.in));
     }
 
@@ -101,19 +102,22 @@ public class CmdLineServiceImpl implements CmdLineService {
         int age = readInt();
 
         //this.contactService.createContact(surname, name, phoneNumber, ageNumber);
-        this.springContactDao.createContact(surname, name, phoneNumber, age);
+        Contact contact = new Contact(surname, name, phoneNumber, age);
+        springContactDao.createContact(contact);
+        System.out.println(contact);
+
     }
 
     private void deleteContact() throws IOException {
         System.out.println("Enter surname in order to remove :");
         String surname = br.readLine();
-        this.springContactDao.deleteContact(surname);
+        springContactDao.deleteContact(contact);
     }
 
     private void showAllContacts() {
         System.out.println("The Contacts of the Notebook are :");
         //Observable
-        List<Contact> contacts = this.springContactDao.showAllContacts();
+        List<Contact> contacts = springContactDao.showAllContacts();
         System.out.println(contacts);
     }
 
@@ -136,7 +140,7 @@ public class CmdLineServiceImpl implements CmdLineService {
         //int newAge = Integer.parseInt(br.readLine());
 
 
-        this.springContactDao.editContact(oldSurname, newSurname, newName, newPhoneNumber, newAge);
+        springContactDao.editContact(contact);
 
     }
 

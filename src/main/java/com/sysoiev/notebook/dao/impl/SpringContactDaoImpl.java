@@ -37,17 +37,17 @@ public class SpringContactDaoImpl implements SpringContactDao {
     }
 
     @Override
-    public boolean createContact(String surname,String  name,String phoneNumber,int age) {
+    public boolean createContact(Contact contact) {
         return jdbcTemplate.update(SQL_SAVE_CONTACT, contact.getSurname(), contact.getName(), contact.getPhoneNumber(), contact.getAge()) > 0;
     }
 
     @Override
-    public boolean deleteContact(String surname) {
+    public boolean deleteContact(Contact contact) {
         return jdbcTemplate.update(SQL_REMOVE_CONTACT, contact.getSurname()) > 0;
     }
 
     @Override
-    public boolean editContact(String oldSurname,String  newSurname,String newName,String newPhoneNumber,int newAge) {
+    public boolean editContact(Contact contact) {
         return jdbcTemplate.update(SQL_UPDATE_CONTACT, contact.getSurname(), contact.getName(),
                 contact.getPhoneNumber(), contact.getAge()) > 0;
     }

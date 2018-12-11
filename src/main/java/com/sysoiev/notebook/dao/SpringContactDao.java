@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface SpringContactDao {
 
-    boolean createContact(String surname,String  name,String phoneNumber,int ageNumber);
+    boolean createContact(Contact contact);
 
-    boolean deleteContact(String surname);
+    boolean deleteContact(Contact contact);
 
-    boolean editContact(String oldSurname,String  newSurname,String newName,String newPhoneNumber,int newAge);
+    boolean editContact(Contact contact);
 
     List<Contact> showAllContacts();
 }
