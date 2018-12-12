@@ -17,6 +17,7 @@ public class ContactMapper implements RowMapper<Contact> {
     public Contact mapRow(ResultSet resultSet, int i) throws SQLException {
 
         Contact contact = new Contact();
+        contact.setId(resultSet.getInt("id"));
         contact.setSurname(resultSet.getString("surname"));
         contact.setName(resultSet.getString("name"));
         contact.setPhoneNumber(resultSet.getString("phoneNumber"));

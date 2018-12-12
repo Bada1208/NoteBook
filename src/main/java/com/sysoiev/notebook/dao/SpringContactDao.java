@@ -13,4 +13,6 @@ public interface SpringContactDao {
     boolean editContact(Contact contact);
 
     List<Contact> showAllContacts();
+
+    Contact getSurname(String surname);
 }

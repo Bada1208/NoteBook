@@ -7,12 +7,14 @@ import java.util.Objects;
 
 public class Contact {
 
+
     /**
      * Класс модель.
      * Этот класс представляет основные сущности и хранимый тип данных.
      * Это логические сущности которые управляются слоем сервисов бизнес логики.
      */
 
+    private int id;
     private String surname;
     private String name;
     private String phoneNumber;
@@ -22,11 +24,20 @@ public class Contact {
 
     }
 
-    public Contact(String surname, String name, String phoneNumber, int age) {
+    public Contact(int id, String surname, String name, String phoneNumber, int age) {
+        this.id = id;
         this.surname = surname;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.age = age;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getSurname() {
@@ -67,7 +78,8 @@ public class Contact {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Contact contact = (Contact) o;
-        return age == contact.age &&
+        return id == contact.id &&
+                age == contact.age &&
                 Objects.equals(surname, contact.surname) &&
                 Objects.equals(name, contact.name) &&
                 Objects.equals(phoneNumber, contact.phoneNumber);
@@ -76,16 +88,17 @@ public class Contact {
     @Override
     public int hashCode() {
 
-        return Objects.hash(surname, name, phoneNumber, age);
+        return Objects.hash(id, surname, name, phoneNumber, age);
     }
 
     @Override
     public String toString() {
-        return "Contact:" + '\n' +
-                "Surname = " + surname + '\n' +
-                "Name = " + name + '\n' +
-                "Phone number = " + phoneNumber + '\n' +
-                "Age = " + age + '\n';
+        return "Contact{" +
+                "id=" + id +
+                ", surname='" + surname + '\'' +
+                ", name='" + name + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", age=" + age +
+                '}';
     }
-
 }

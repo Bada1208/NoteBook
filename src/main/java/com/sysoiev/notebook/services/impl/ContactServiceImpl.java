@@ -22,8 +22,8 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public void createContact(String surname, String name, String phoneNumber, int age) {
-        contactList.add(new Contact(surname, name, phoneNumber, age));
+    public void createContact(int id,String surname, String name, String phoneNumber, int age) {
+        contactList.add(new Contact(id,surname, name, phoneNumber, age));
 
 //
 //        for (Map.Entry<String, Contact> element : contactList.entrySet()) {
@@ -48,7 +48,7 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public void editContact(String oldSurname, String newSurname, String newName, String newPhoneNumber, int newAge) {
+    public void editContact(String oldSurname,int id, String newSurname, String newName, String newPhoneNumber, int newAge) {
 
 //        Contact contact = this.contactList.get(oldSurname);
 //

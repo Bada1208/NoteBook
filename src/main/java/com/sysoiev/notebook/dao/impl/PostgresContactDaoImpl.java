@@ -19,7 +19,7 @@ public class PostgresContactDaoImpl implements ContactDao {
         PostgresContactDaoImpl.deleteTable();
         try (Connection connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
              Statement st = connection.createStatement()) {
-            st.execute("CREATE TABLE CLIENT(ID INT PRIMARY KEY ,\n" +
+            st.execute("CREATE TABLE CLIENT(ID INTEGER ,\n" +
                     "   SURNAME VARCHAR(255),NAME VARCHAR(255),PHONENUMBER VARCHAR(255),AGE INTEGER);");
         } catch (SQLException e) {
             System.err.println("Something went wrong while initialisation " + e);
@@ -93,11 +93,12 @@ public class PostgresContactDaoImpl implements ContactDao {
              ResultSet resultSet = st.executeQuery("SELECT * FROM CLIENT ORDER BY ID")) {
 
             while (resultSet.next()) {
+                final Integer id = resultSet.getInt("ID");
                 final String surname = resultSet.getString("SURNAME");
                 final String name = resultSet.getString("NAME");
                 final String phoneNumber = resultSet.getString("PHONENUMBER");
                 final Integer age = resultSet.getInt("AGE");
-                contacts.add(new Contact(surname, name, phoneNumber, age));
+                contacts.add(new Contact(id,surname, name, phoneNumber, age));
             }
         } catch (SQLException e) {
             System.err.println("Something went wrong when selecting all clients " + e);

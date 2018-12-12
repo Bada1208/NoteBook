@@ -29,7 +29,8 @@ import java.io.InputStreamReader;
 @Configuration
 @ComponentScan("com.sysoiev.notebook")
 @PropertySource("classpath:database.properties")
-public class AppSpringDataConfig {
+public class AppSpringJdbcConfig {
+
     @Autowired
     Environment environment;
 

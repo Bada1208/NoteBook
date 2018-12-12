@@ -91,6 +91,8 @@ public class CmdLineServiceImpl implements CmdLineService {
     }
 
     private void createContact() throws IOException {
+        System.out.println("Enter id :");
+        int id = readInt();
         System.out.println("Enter surname :");
         String surname = br.readLine();
         System.out.println("Enter name :");
@@ -102,16 +104,18 @@ public class CmdLineServiceImpl implements CmdLineService {
         int age = readInt();
 
         //this.contactService.createContact(surname, name, phoneNumber, ageNumber);
-        Contact contact = new Contact(surname, name, phoneNumber, age);
+        Contact contact = new Contact(id,surname, name, phoneNumber, age);
         springContactDao.createContact(contact);
-        System.out.println(contact);
 
     }
 
     private void deleteContact() throws IOException {
         System.out.println("Enter surname in order to remove :");
         String surname = br.readLine();
-        springContactDao.deleteContact(contact);
+        Contact contactDeleted = springContactDao.getSurname(surname);
+        //Person personById = personDAO.getPersonById(2L);
+        springContactDao.deleteContact(contactDeleted);
+        //personDAO.deletePerson(personById);
     }
 
     private void showAllContacts() {

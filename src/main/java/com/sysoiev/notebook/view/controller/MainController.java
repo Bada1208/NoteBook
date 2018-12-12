@@ -80,6 +80,9 @@ public class MainController {
     private TextField txtSearch;
 
     @FXML
+    private TableColumn<Contact, String> idColumn;
+
+    @FXML
     private TableColumn<Contact, String> surnameColumn;
 
     @FXML
@@ -93,12 +96,13 @@ public class MainController {
 
 
     public void createContact() {
+        String id = idColumn.getText();
         String surname = surnameColumn.getText();
         String name = nameColumn.getText();
         String phoneNumber = phonenumberColumn.getText();
         String age = ageColumn.getText();
 
-        contactService.createContact(surname, name, phoneNumber, new Integer(age));
+        contactService.createContact(new Integer(id),surname, name, phoneNumber, new Integer(age));
     }
 
     @FXML

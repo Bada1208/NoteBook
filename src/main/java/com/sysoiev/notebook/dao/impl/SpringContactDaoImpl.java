@@ -23,9 +23,12 @@ import java.util.List;
 @Component
 public class SpringContactDaoImpl implements SpringContactDao {
 
-    Contact contact;
+    private Contact contact;
+
     JdbcTemplate jdbcTemplate;
 
+
+    private final String SQL_FIND_CONTACT_BY_SURNAME = "select * from clientspring where SURNAME = ?";
     private final String SQL_REMOVE_CONTACT = "DELETE FROM clientspring WHERE SURNAME=?;";
     private final String SQL_UPDATE_CONTACT = "UPDATE clientspring SET SURNAME=?, NAME=?, PHONENUMBER=?, AGE=? WHERE SURNAME=?";
     private final String SQL_SHOW_ALL = "SELECT * FROM clientspring ORDER BY ID";
@@ -38,7 +41,7 @@ public class SpringContactDaoImpl implements SpringContactDao {
 
     @Override
     public boolean createContact(Contact contact) {
-        return jdbcTemplate.update(SQL_SAVE_CONTACT, contact.getSurname(), contact.getName(), contact.getPhoneNumber(), contact.getAge()) > 0;
+        return jdbcTemplate.update(SQL_SAVE_CONTACT, contact.getId(), contact.getSurname(), contact.getName(), contact.getPhoneNumber(), contact.getAge()) > 0;
     }
 
     @Override
@@ -48,7 +51,7 @@ public class SpringContactDaoImpl implements SpringContactDao {
 
     @Override
     public boolean editContact(Contact contact) {
-        return jdbcTemplate.update(SQL_UPDATE_CONTACT, contact.getSurname(), contact.getName(),
+        return jdbcTemplate.update(SQL_UPDATE_CONTACT, contact.getId(), contact.getSurname(), contact.getName(),
                 contact.getPhoneNumber(), contact.getAge()) > 0;
     }
 
@@ -57,4 +60,8 @@ public class SpringContactDaoImpl implements SpringContactDao {
         return jdbcTemplate.query(SQL_SHOW_ALL, new ContactMapper());
     }
 
+    @Override
+    public Contact getSurname(String surname) {
+        return jdbcTemplate.queryForObject(SQL_FIND_CONTACT_BY_SURNAME, new Object[]{surname}, new ContactMapper());
+    }
 }
