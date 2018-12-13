@@ -53,6 +53,7 @@ public class SpringContactDaoImpl implements SpringContactDao {
     public boolean editContact(Contact contact) {
         return jdbcTemplate.update(SQL_UPDATE_CONTACT, contact.getId(), contact.getSurname(), contact.getName(),
                 contact.getPhoneNumber(), contact.getAge()) > 0;
+
     }
 
     @Override

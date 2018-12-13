@@ -143,8 +143,13 @@ public class CmdLineServiceImpl implements CmdLineService {
         int newAge = readInt();
         //int newAge = Integer.parseInt(br.readLine());
 
+        Contact updatedContact = springContactDao.getSurname(oldSurname);
+        updatedContact.setSurname(newSurname);
+        updatedContact.setName(newName);
+        updatedContact.setPhoneNumber(newPhoneNumber);
+        updatedContact.setAge(newAge);
+        springContactDao.editContact(updatedContact);
 
-        springContactDao.editContact(contact);
 
     }
 
