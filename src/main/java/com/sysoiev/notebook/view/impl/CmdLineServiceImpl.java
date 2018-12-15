@@ -133,6 +133,9 @@ public class CmdLineServiceImpl implements CmdLineService {
         System.out.println("Enter new surname :");
         String newSurname = br.readLine();
 
+        System.out.println("Enter new id :");
+        int newId = readInt();
+
         System.out.println("Enter new name :");
         String newName = br.readLine();
 
@@ -145,6 +148,7 @@ public class CmdLineServiceImpl implements CmdLineService {
 
         Contact updatedContact = springContactDao.getSurname(oldSurname);
         updatedContact.setSurname(newSurname);
+        updatedContact.setId(newId);
         updatedContact.setName(newName);
         updatedContact.setPhoneNumber(newPhoneNumber);
         updatedContact.setAge(newAge);

@@ -30,7 +30,7 @@ public class SpringContactDaoImpl implements SpringContactDao {
 
     private final String SQL_FIND_CONTACT_BY_SURNAME = "select * from clientspring where SURNAME = ?";
     private final String SQL_REMOVE_CONTACT = "DELETE FROM clientspring WHERE SURNAME=?;";
-    private final String SQL_UPDATE_CONTACT = "UPDATE clientspring SET SURNAME=?, NAME=?, PHONENUMBER=?, AGE=? WHERE SURNAME=?";
+    private final String SQL_UPDATE_CONTACT = "UPDATE clientspring  SET SURNAME=?,ID=?, NAME=?, PHONENUMBER=?, AGE=? WHERE SURNAME=?";
     private final String SQL_SHOW_ALL = "SELECT * FROM clientspring ORDER BY ID";
     private final String SQL_SAVE_CONTACT = "INSERT INTO clientspring VALUES(?, ?, ?, ?, ?);";
 
@@ -51,7 +51,7 @@ public class SpringContactDaoImpl implements SpringContactDao {
 
     @Override
     public boolean editContact(Contact contact) {
-        return jdbcTemplate.update(SQL_UPDATE_CONTACT, contact.getId(), contact.getSurname(), contact.getName(),
+        return jdbcTemplate.update(SQL_UPDATE_CONTACT,contact.getId(), contact.getSurname(), contact.getName(),
                 contact.getPhoneNumber(), contact.getAge()) > 0;
 
     }

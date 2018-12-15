@@ -19,7 +19,7 @@ public class PostgresContactDaoImpl implements ContactDao {
         PostgresContactDaoImpl.deleteTable();
         try (Connection connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
              Statement st = connection.createStatement()) {
-            st.execute("CREATE TABLE CLIENT(ID INTEGER ,\n" +
+            st.execute("CREATE TABLE CLIENT(ID INT PRIMARY KEY ,\n" +
                     "   SURNAME VARCHAR(255),NAME VARCHAR(255),PHONENUMBER VARCHAR(255),AGE INTEGER);");
         } catch (SQLException e) {
             System.err.println("Something went wrong while initialisation " + e);
