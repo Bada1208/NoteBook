@@ -10,7 +10,7 @@ public interface SpringContactDao {
 
     boolean deleteContact(Contact contact);
 
-    boolean editContact(Contact contact);
+    boolean editContact(Contact contact, String oldSurname);
 
     List<Contact> showAllContacts();
 

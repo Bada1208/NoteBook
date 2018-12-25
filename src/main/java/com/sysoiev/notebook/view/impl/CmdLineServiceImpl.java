@@ -91,8 +91,8 @@ public class CmdLineServiceImpl implements CmdLineService {
     }
 
     private void createContact() throws IOException {
-        System.out.println("Enter id :");
-        int id = readInt();
+        /*System.out.println("Enter id :");
+        int id = readInt();*/
         System.out.println("Enter surname :");
         String surname = br.readLine();
         System.out.println("Enter name :");
@@ -104,7 +104,7 @@ public class CmdLineServiceImpl implements CmdLineService {
         int age = readInt();
 
         //this.contactService.createContact(surname, name, phoneNumber, ageNumber);
-        Contact contact = new Contact(id,surname, name, phoneNumber, age);
+        Contact contact = new Contact(surname, name, phoneNumber, age);
         springContactDao.createContact(contact);
 
     }
@@ -133,8 +133,8 @@ public class CmdLineServiceImpl implements CmdLineService {
         System.out.println("Enter new surname :");
         String newSurname = br.readLine();
 
-        System.out.println("Enter new id :");
-        int newId = readInt();
+        /*System.out.println("Enter new id :");
+        int newId = readInt();*/
 
         System.out.println("Enter new name :");
         String newName = br.readLine();
@@ -148,7 +148,7 @@ public class CmdLineServiceImpl implements CmdLineService {
 
         Contact updatedContact = springContactDao.getSurname(oldSurname);
         updatedContact.setSurname(newSurname);
-        updatedContact.setId(newId);
+        //updatedContact.setId(newId);
         updatedContact.setName(newName);
         updatedContact.setPhoneNumber(newPhoneNumber);
         updatedContact.setAge(newAge);
@@ -157,8 +157,7 @@ public class CmdLineServiceImpl implements CmdLineService {
 
     }
 
-    private int readInt() throws IOException {
-        try {
+    private int readInt() throws IOException {        try {
             // System.out.println("Input number!");
             String line = br.readLine();
             return ValidationUtil.checkNumber(line);

@@ -20,8 +20,8 @@ public class FSContactServiceImpl implements ContactService {
     }
 
     @Override
-    public void createContact(int id,String surName, String name, String phoneNumber, int age) {
-        contactDao.saveContact(new Contact(id,surName, name, phoneNumber, age));
+    public void createContact(String surName, String name, String phoneNumber, int age) {
+        contactDao.saveContact(new Contact(surName, name, phoneNumber, age));
     }
 
     @Override
@@ -42,8 +42,8 @@ public class FSContactServiceImpl implements ContactService {
 //        }
     }
 
-    public void editContact(String oldSurname,int id, String newSurname, String newName, String newPhoneNumber, int newAge) {
-        Contact contact = new Contact(id,newSurname, newName, newPhoneNumber, newAge);
+    public void editContact(String oldSurname, String newSurname, String newName, String newPhoneNumber, int newAge) {
+        Contact contact = new Contact(newSurname, newName, newPhoneNumber, newAge);
         contactDao.updateContact(oldSurname, contact);
     }
 }

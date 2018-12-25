@@ -96,13 +96,13 @@ public class MainController {
 
 
     public void createContact() {
-        String id = idColumn.getText();
+        //String id = idColumn.getText();
         String surname = surnameColumn.getText();
         String name = nameColumn.getText();
         String phoneNumber = phonenumberColumn.getText();
         String age = ageColumn.getText();
 
-        contactService.createContact(new Integer(id),surname, name, phoneNumber, new Integer(age));
+        contactService.createContact(surname, name, phoneNumber, new Integer(age));
     }
 
     @FXML
