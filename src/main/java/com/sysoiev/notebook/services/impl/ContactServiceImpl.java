@@ -6,10 +6,6 @@ import com.sysoiev.notebook.services.ContactService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-
-import java.util.HashMap;
-import java.util.Map;
-
 public class ContactServiceImpl implements ContactService {
     /**
      * Реализация ContactService которая использует Map для хранения данных.
