@@ -7,7 +7,7 @@
       <jdbc-driver>org.h2.Driver</jdbc-driver>
       <jdbc-url>jdbc:h2:~/test</jdbc-url>
     </data-source>
-    <data-source source="LOCAL" name="postgres@localhost" uuid="cdb15f5a-c717-4bde-a634-757c151ad5d3">
+    <data-source source="LOCAL" name="postgres@localhost" uuid="434e6763-e173-4328-aa1b-e2e049d53136">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
