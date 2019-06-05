@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ContactServiceImplTest extends Assert {
-   public ContactServiceImpl contactService;// = new ContactServiceImpl();
+
     private Contact contact1;
     private Contact contact2;
 
@@ -29,36 +29,40 @@ public class ContactServiceImplTest extends Assert {
         contact2 = new Contact("Sysoieva", "Anna", "987654321", 26);
 
         contactNotAdd1 = new Contact("", "", "", 0);
-        contactNotAdd2 = new Contact("", "", "", 0);
+        contactNotAdd2 = new Contact(null, null, null, 0);
+    }
+    @Test
+    public void createContact_EMPTY_SURNAME() {
+        for (Contact contact : Contact.contactService.showAllContacts()) {
+            if (contact.getSurname() != null && contact.getSurname().isEmpty()) {
+                Assert.fail("Попытка создания пользователя с пустой фамилией");
+            }
+        }
+    }
+    @Test
+    public void createContact_EMPTY_NAME() {
+        for (Contact contact : Contact.contactService.showAllContacts()) {
+            if (contact.getName() != null && contact.getName().isEmpty()) {
+                Assert.fail("Попытка создания пользователя с пустым именем");
+            }
+        }
+    }
+    @Test
+    public void createContact_EMPTY_PHONE_NUMBER() {
+        for (Contact contact : Contact.contactService.showAllContacts()) {
+            if (contact.getPhoneNumber() != null && contact.getPhoneNumber().isEmpty()) {
+                Assert.fail("Попытка создания пользователя с пустым номером телефона");
+            }
+        }
     }
 
     @Test
-    public void createContactTest(String surname, String name, String phoneNumber, int age) {
-       // assertNotNull(createContact("Sysoiev", "Bogdan", "123456789", 33));
-    }
-    /*//создаем тестовые данные
-    User user = new User("Евгений", 35, Sex.MALE);
-    User user1 = new User("Марина", 34, Sex.FEMALE);
-    User user2 = new User("Алина", 7, Sex.FEMALE);
-
-    //создаем список expected и заполняем его данными нашего метода
-    List<User> expected = User.getAllUsers();
-
-    //создаем список actual в него помещаем данные для сравнения
-    //то что мы предпологиаем метод должен вернуть
-    List<User> actual = new ArrayList<>();
-    actual.add(user);
-    actual.add(user1);
-    actual.add(user2);
-
-    //запускаем тест, в случае если список expected и actual не будут равны
-    //тест будет провален, о результатах теста читаем в консоли
-    Assert.assertEquals(expected, actual);*/
-
-
-    @Test
-    public void deleteContactTest(String surname) {
-        //assertNotNull(deleteContactTest("Sysoiev"));
+    public void createContact_AGE_ZERO() {
+        for (Contact contact : Contact.contactService.showAllContacts()) {
+            if (contact.getAge() <= 0) {
+                Assert.fail("Попытка создания пользователя c не допустимым возрастом");
+            }
+        }
     }
 
     @Test
@@ -72,8 +76,4 @@ public class ContactServiceImplTest extends Assert {
         Assert.assertEquals(expected, actual);
     }
 
-    @Test
-    public void editContactTest() {
-        assertNotNull(contactService);
-    }
 }
